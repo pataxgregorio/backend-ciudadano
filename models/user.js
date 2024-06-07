@@ -5,7 +5,7 @@ class User {
     db.query('SELECT * FROM users', callback); 
   }
 
-  static getByEmail(email, callback) {
+  static findUser(email, callback) {
     db.query('SELECT * FROM users WHERE email = ?', [email], callback);
   }
 }
