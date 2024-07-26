@@ -15,9 +15,10 @@ async function login(req, res) {
     // Query for the user by email using MySQL2
     
       User.findUser(email, async (error, results) => {
+        await results;
         if (error) {
           console.error('Error al obtener usuario:', error);
-          return res.status(500).json({ message: 'Error en el servidor' });
+          return res.status(500).json({ message: 'Error a obtener usuario en el servidor', error: error.message });
         }
         if (results.length === 0) {
           return res.status(401).json({ message: 'Credenciales inválidas' }); // User not found
@@ -38,7 +39,7 @@ async function login(req, res) {
 
   } catch (err) {
     console.error('Error en el login:', err);
-    res.status(500).json({ message: 'Error en el servidor' });
+    res.status(500).json({ message: 'Error en el servidor', error: err.message });
   }
 }
 
