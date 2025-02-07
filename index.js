@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use('/', routes);
 
-const port = 3000;
+const port = 3001;
 
 app.listen(port, () => {
   console.log(`Servidor escuchando en el puerto ${port}`);
